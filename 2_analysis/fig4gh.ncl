@@ -22,7 +22,7 @@ lonn2@units="degrees_east"
 
 
 
-f1 = addfile("2_analysis/fig5_degree/Network_Tmax_lag13_36.nc","r")
+f1 = addfile("2_analysis/fig4_degree/Network_Tmax_lag13_36.nc","r")
 network_Tmax_weight = (f1->network_weight)
 
 degree1_SST = dim_sum_n_Wrap(dim_sum_n_Wrap(network_Tmax_weight(:,:,:,:), 3), 2)
@@ -32,7 +32,7 @@ copy_VarCoords(network_Tmax_weight(0,0,:,:), degree1_Tmax)
 
 
 
-f2 = addfile("2_analysis/fig5_degree/Network_Rain_lag13_36.nc","r")
+f2 = addfile("2_analysis/fig4_degree/Network_Rain_lag13_36.nc","r")
 network_Rain_weight = (f2->network_weight)
 
 degree2_SST = dim_sum_n_Wrap(dim_sum_n_Wrap(network_Rain_weight(:,:,:,:), 3), 2)
