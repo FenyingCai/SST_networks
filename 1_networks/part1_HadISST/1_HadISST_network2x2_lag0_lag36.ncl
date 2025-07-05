@@ -106,7 +106,7 @@ printMinMax(cor_Networks, 1)
 
 
 ;;---------------------- to nc file -----------------------;;
-output="1_network/part1_HadISST_2x2/"
+output="1_network/part1_HadISST/"
 name1="Networks2x2_SST_lag"+ilag
 system("/bin/rm -f "+output+name1+".nc")
 ncdf1=addfile(output+name1+".nc","c")
