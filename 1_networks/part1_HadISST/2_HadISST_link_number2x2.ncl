@@ -1,0 +1,74 @@
+load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
+load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
+begin
+
+
+dim_0 = (/60,180, 60,180/)
+latt=fspan(-59.0,59.0,60)   ;; 2*2 resolution
+lonn=fspan(-179.0,179.0,180)
+latt@units="degrees_north"
+lonn@units="degrees_east"
+
+lat_weight = new((/60,180, 60,180/), float)
+do ilat = 0,59
+do jlat = 0,59
+lat_weight(ilat,:,jlat,:) = cos((abs(latt(ilat))+abs(latt(jlat))) /2 / 180.0 * 3.14159)
+end do
+end do
+printMinMax(lat_weight, 1)
+
+self_matrix = new((/60,180, 60,180/), float)
+self_matrix = 0.0
+do ilat = 0,59
+do jlon = 0,179
+self_matrix(ilat,jlon,ilat,jlon) = 1.0
+end do
+end do
+
+
+
+link_number = new(37, float)
+self_correlated_strength = new(37, float)
+do ilag = 0,36
+print(" ilag  =  "+ilag)
+
+;;-----------------------------------  read concurrence matrix  ----------------------------------;;
+f1 = addfile("1_networks/part1_HadISST/Networks2x2_SST_lag"+ilag+".nc","r")
+networks0 = (f1->networks0)
+
+self_correlated_strength(ilag) = dim_sum_n_Wrap(dim_sum_n_Wrap(dim_sum_n_Wrap(dim_sum_n_Wrap(networks0*lat_weight*self_matrix, 3), 2), 1), 0)
+
+
+networks0 = abs(networks0)
+
+
+
+networks0 = where(networks0.gt.0.0, 1.0, 0.0)
+networks0 = where(ismissing(networks0), 0.0, networks0)
+
+
+link_number(ilag) = dim_sum_n_Wrap(dim_sum_n_Wrap(dim_sum_n_Wrap(dim_sum_n_Wrap(networks0*lat_weight, 3), 2), 1), 0)
+
+end do
+print(link_number)
+print(self_correlated_strength)
+
+
+
+print(" reg = "+regCoef(fspan(0,12,13), log10(link_number(0:12))))
+
+
+
+
+;;---------------------- to nc file -----------------------;;
+output="1_networks/part1_HadISST/"
+name1="Link2x2_number_lag0_36"
+system("/bin/rm -f "+output+name1+".nc")
+ncdf1=addfile(output+name1+".nc","c")
+ncdf1->link_number=link_number
+ncdf1->self_correlated_strength=self_correlated_strength
+
+
+end
+
+
