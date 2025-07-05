@@ -10,51 +10,16 @@ ds1 = xr.open_dataset("1_networks/part1_HadISST/Link2x2_number_lag0_36.nc")
 link_number = np.log10(ds1.link_number.data)
 self_cor_strength = ds1.self_correlated_strength.data
 
-ds2 = xr.open_dataset("1_networks/part3_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow6.nc")
-link_number_remove6 = np.log10(ds2.link_number.data)
-self_cor_strength_remove6 = ds2.self_correlated_strength.data
 
-ds3 = xr.open_dataset("1_networks/part3_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow12.nc")
-link_number_remove12 = np.log10(ds3.link_number.data)
-self_cor_strength_remove12 = ds3.self_correlated_strength.data
-
-ds4 = xr.open_dataset("1_networks/part3_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow18.nc")
-link_number_remove18 = np.log10(ds4.link_number.data)
-self_cor_strength_remove18 = ds4.self_correlated_strength.data
-
-ds5 = xr.open_dataset("1_networks/part3_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow24.nc")
-link_number_remove24 = np.log10(ds5.link_number.data)
-self_cor_strength_remove24 = ds5.self_correlated_strength.data
-
-ds6 = xr.open_dataset("1_networks/part3_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow30.nc")
-link_number_remove30 = np.log10(ds6.link_number.data)
-self_cor_strength_remove30 = ds6.self_correlated_strength.data
-
-ds7 = xr.open_dataset("1_networks/part3_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow36.nc")
-link_number_remove36 = np.log10(ds7.link_number.data)
-self_cor_strength_remove36 = ds7.self_correlated_strength.data
-
-ds8 = xr.open_dataset("1_networks/part3_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow42.nc")
-link_number_remove42 = np.log10(ds8.link_number.data)
-self_cor_strength_remove42 = ds8.self_correlated_strength.data
-
-ds8 = xr.open_dataset("1_networks/part3_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow48.nc")
-link_number_remove48 = np.log10(ds8.link_number.data)
-self_cor_strength_remove48 = ds8.self_correlated_strength.data
-
-ds8 = xr.open_dataset("1_networks/part3_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow54.nc")
-link_number_remove54 = np.log10(ds8.link_number.data)
-self_cor_strength_remove54 = ds8.self_correlated_strength.data
-
-ds8 = xr.open_dataset("1_networks/part3_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow60.nc")
+ds8 = xr.open_dataset("1_networks/part4_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow60.nc")
 link_number_remove60 = np.log10(ds8.link_number.data)
 self_cor_strength_remove60 = ds8.self_correlated_strength.data
 
-ds8 = xr.open_dataset("1_networks/part3_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow72.nc")
+ds8 = xr.open_dataset("1_networks/part4_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow72.nc")
 link_number_remove72 = np.log10(ds8.link_number.data)
 self_cor_strength_remove72 = ds8.self_correlated_strength.data
 
-ds8 = xr.open_dataset("1_networks/part3_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow84.nc")
+ds8 = xr.open_dataset("1_networks/part4_HadISST_removelowfreq/Link2x2_number_lag0_36_removelow84.nc")
 link_number_remove84 = np.log10(ds8.link_number.data)
 self_cor_strength_remove84 = ds8.self_correlated_strength.data
 
